@@ -18,7 +18,7 @@ class HideEmail {
 
 	static function obfuscateEmails( $content ) {
 		$search = array(
-				'/<a ([^>]*)href=([\'"])\s*mailto:\s*(\S+)@(\S+)([\'"])([^>]*)>([^>]*)<\/a>/siUe', // (\?[^\'"]*subject=([^&]+))?
+				'/<a([^>]*)href=([\'"])\s*mailto:\s*(\S+)@(\S+)([\'"])([^>]*)>([^>]|<[^>]*>[^>]*<\s*\/[^>]*>)*<\/a>/siUe',
 				'/[^"\'<>]+@[^"\'<>]+/e'
 		);
 		$replace = array(
