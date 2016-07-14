@@ -17,9 +17,10 @@ class HideEmail {
 	public static $functionIncluded = false;
 
 	static function obfuscateEmails( $content ) {
+		// @riful: did I break things here by removing the /e ?
 		$search = array(
-				'/<a([^>]*)href=([\'"])\s*mailto:\s*(\S+)@(\S+)([\'"])([^>]*)>([^>]|<[^>]*>[^>]*<\s*\/[^>]*>)*<\/a>/siUe',
-				'/[^"\'<>]+@[^"\'<>]+/e'
+				'/<a([^>]*)href=([\'"])\s*mailto:\s*(\S+)@(\S+)([\'"])([^>]*)>([^>]|<[^>]*>[^>]*<\s*\/[^>]*>)*<\/a>/siU',
+				'/[^"\'<>]+@[^"\'<>]+/'
 		);
 		$replace = array(
 				'"<script>document.write(deobfuscate(".HideEmail::obfuscate("$0")."))</script>'."\n"
